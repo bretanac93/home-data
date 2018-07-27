@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { fetchHouses } from '../../store/actions/houses';
 
 import ProviderItem from '../ProviderItem/ProviderItem'
 
 class ProviderList extends Component {
-    componentDidMount() {
-
-    }
-
     render() {
+        let providersUI = [];
+        for (let item of this.props.providers) {
+            providersUI.push(<ProviderItem provider={item} key={item.id} />)
+        }
+
         return (
             <div className="ProviderList">
-                <ProviderItem/>
-                <hr/>
-                <ProviderItem/>
-                <hr/>
-                <ProviderItem/>
+                {providersUI}
             </div>
         );
     }
 }
 
-export default connect(mapStateToProps)(ProviderList);
+export default ProviderList;

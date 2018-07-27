@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 
 class HouseTable extends Component {
     render() {
+        let data = [];
+        for (let item of this.props.houses) {
+            data.push(
+                <tr key={item.internal_id}>
+                    <td>{item.internal_id}</td>
+                    <td><img src={item.exterior_images[0]['fill-320x240']} alt="house-1" width={50 + 'px'} height={50 + 'px'}/></td>
+                    <td>{item.name}</td>
+                    <td>{item.price_ready} €</td>
+                    <td>{item.living_area_total} sqm</td>
+                </tr>
+            )
+        }
         return (
             <table className="HouseList" style={{width: 100 + '%'}}>
                 <thead>
@@ -14,20 +26,7 @@ class HouseTable extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="http://via.placeholder.com/50x50" alt="house-1"/></td>
-                        <td>Bungalow 1</td>
-                        <td>1200.00 EUR</td>
-                        <td>120 sqm</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="http://via.placeholder.com/50x50" alt="house-1"/></td>
-                        <td>Bungalow 1</td>
-                        <td>1200.00 EUR</td>
-                        <td>120 sqm</td>
-                    </tr>
+                    {data}
                 </tbody>
             </table>
         );

@@ -9,14 +9,14 @@ class ProviderItem extends Component {
             <div className="ProviderItem">
                 <div className="header">
                     <div className="logo">
-                        <img src="http://via.placeholder.com/140x50" alt="CompanyLogo"/>
+                        <img src={this.props.provider.logo['max-140x50']} alt="CompanyLogo"/>
                     </div>
                     <div className="title">
-                        <h3>ACME Inc</h3>
+                        <h3>{this.props.provider.display_name}</h3>
                     </div>
                 </div>
                 <div className="table">
-                    <HouseTable/>
+                    <HouseTable houses={this.props.provider.houses} />
                 </div>
             </div>
         );
