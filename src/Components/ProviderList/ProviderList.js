@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { fetchHouses } from '../../store/actions/houses';
+
 import ProviderItem from '../ProviderItem/ProviderItem'
+
 class ProviderList extends Component {
+    componentDidMount() {
+
+    }
+
     render() {
         return (
             <div className="ProviderList">
@@ -14,4 +22,4 @@ class ProviderList extends Component {
     }
 }
 
-export default ProviderList;
+export default connect(mapStateToProps)(ProviderList);

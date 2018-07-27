@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HouseList from '../HouseList/HouseList'
+import HouseTable from '../HouseTable/HouseTable'
 
 import './ProviderItem.css'
 
@@ -16,7 +16,7 @@ class ProviderItem extends Component {
                     </div>
                 </div>
                 <div className="table">
-                    <HouseList/>
+                    <HouseTable/>
                 </div>
             </div>
         );

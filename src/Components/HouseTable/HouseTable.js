@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class HouseList extends Component {
+class HouseTable extends Component {
     render() {
         return (
             <table className="HouseList" style={{width: 100 + '%'}}>
@@ -34,4 +34,4 @@ class HouseList extends Component {
     }
 }
 
-export default HouseList;
+export default HouseTable;
