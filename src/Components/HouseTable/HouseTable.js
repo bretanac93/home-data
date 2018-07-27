@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux'
+import { orderHousesCollection } from '../../store/actions/houses'
 class HouseTable extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            order: 'desc',
+            orderedBy: 'internal_id'
+        };
+    };
+
+    orderBy(property, vendor_id) {
+        // When click first time, set desc, otherwise set asc
+        this.setState({
+            order: this.state.order === 'desc' ? 'asc': 'desc',
+            orderedBy: property
+        });
+
+        this.props.dispatch(orderHousesCollection(this.state.orderedBy, this.state.order, vendor_id));
+    };
     render() {
         return (
             <table className="HouseList" style={{width: 100 + '%'}}>
                 <thead>
                     <tr>
-                        <th>House Id</th>
+                        <th onClick={() => {this.orderBy('internal_id', this.props.houses[0].vendor_verbose.id)}}>House Id</th>
                         <th>Image</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Size</th>
+                        <th onClick={() => {this.orderBy('name', this.props.houses[0].vendor_verbose.id)}}>Name</th>
+                        <th onClick={() => {this.orderBy('price_ready', this.props.houses[0].vendor_verbose.id)}}>Price</th>
+                        <th onClick={() => {this.orderBy('living_area_total', this.props.houses[0].vendor_verbose.id)}}>Size</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchHouses } from "../../store/actions/houses";
+import {fetchHouses, orderHousesCollection} from "../../store/actions/houses";
 
 import ProviderList from '../../Components/ProviderList/ProviderList'
 
@@ -8,6 +8,9 @@ class App extends Component {
     componentDidMount() {
         this.props.dispatch(fetchHouses());
     }
+    orderBy(property, vendor_id) {
+        this.props.dispatch(orderHousesCollection(property, 'asc', vendor_id));
+    };
     render() {
         if (this.props.loading) {
             return (<div>Loading...</div>)
@@ -17,7 +20,7 @@ class App extends Component {
         }
         return (
             <div>
-                <ProviderList providers={this.props.providers} />
+                <ProviderList providers={this.props.providers}  />
             </div>
         )
     }
@@ -26,7 +29,7 @@ class App extends Component {
 const mapStateToProps = state => ({
     providers: state.houses.items,
     loading: state.houses.loading,
-    error: state.houses.error
+    error: state.houses.error,
 });
 
 export default connect(mapStateToProps)(App)

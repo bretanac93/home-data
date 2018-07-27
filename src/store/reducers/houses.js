@@ -1,13 +1,15 @@
 import {
     FETCH_HOUSES_START,
     FETCH_HOUSES_SUCCESS,
-    FETCH_HOUSES_FAILURE
+    FETCH_HOUSES_FAILURE,
+    ORDER_SPECIFIC,
 } from '../actions/houses';
 
 const initialState = {
     items: [],
     loading: false,
-    error: null
+    error: null,
+    name: 'Cesar'
 };
 
 const houses = (state = initialState, action) => {
@@ -30,6 +32,12 @@ const houses = (state = initialState, action) => {
                 loading: false,
                 error: action.payload.error,
                 items: []
+            };
+        case ORDER_SPECIFIC:
+            return {
+                ...state,
+                loading: false,
+                items: action.payload.houses
             };
         default:
             return state;

@@ -1,8 +1,10 @@
 import axios from 'axios';
+import _ from 'lodash';
 
 export const FETCH_HOUSES_START = "FETCH_HOUSES_START";
 export const FETCH_HOUSES_SUCCESS = "FETCH_HOUSES_SUCCESS";
 export const FETCH_HOUSES_FAILURE = "FETCH_HOUSES_FAILURE";
+export const ORDER_SPECIFIC = "ORDER_SPECIFIC";
 
 export const fetchHousesBegin = () => ({
     type: FETCH_HOUSES_START
@@ -17,6 +19,23 @@ export const fetchHousesFailure = error => ({
     type: FETCH_HOUSES_SUCCESS,
     payload: { error }
 });
+
+export const ordered = houses => ({
+    type: ORDER_SPECIFIC,
+    payload: { houses }
+});
+
+export function orderHousesCollection (prop, order, vendor_id) {
+    return (dispatch, getState) => {
+        let { houses } = getState();
+        for (let item of houses.items) {
+            if (item.id === vendor_id) {
+                item.houses = _.orderBy(item.houses, [prop], [order]);
+            }
+        }
+        dispatch(ordered(houses.items));
+    }
+}
 
 function handleData(data) {
 
@@ -56,4 +75,3 @@ export function fetchHouses() {
             .catch(error => dispatch(fetchHousesFailure(error)));
     }
 }
-
