@@ -27,13 +27,13 @@ export const ordered = houses => ({
 
 export function orderHousesCollection (prop, order, vendor_id) {
     return (dispatch, getState) => {
-        let { houses } = getState();
-        for (let item of houses.items) {
+        let vendors = [...getState().houses.items];
+        for (let item of vendors) {
             if (item.id === vendor_id) {
                 item.houses = _.orderBy(item.houses, [prop], [order]);
             }
         }
-        dispatch(ordered(houses.items));
+        dispatch(ordered(vendors));
     }
 }
 

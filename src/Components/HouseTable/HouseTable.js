@@ -21,8 +21,9 @@ class HouseTable extends Component {
     };
     render() {
         return (
-            <table className="HouseList" style={{width: 100 + '%'}}>
-                <thead>
+            <div>
+                <table className="HouseList" style={{width: 100 + '%'}}>
+                    <thead>
                     <tr>
                         <th onClick={() => {this.orderBy('internal_id', this.props.houses[0].vendor_verbose.id)}}>House Id</th>
                         <th>Image</th>
@@ -30,8 +31,8 @@ class HouseTable extends Component {
                         <th onClick={() => {this.orderBy('price_ready', this.props.houses[0].vendor_verbose.id)}}>Price</th>
                         <th onClick={() => {this.orderBy('living_area_total', this.props.houses[0].vendor_verbose.id)}}>Size</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     {this.props.houses.map(item => (
                         <tr key={item.internal_id}>
                             <td>{item.internal_id}</td>
@@ -41,10 +42,11 @@ class HouseTable extends Component {
                             <td>{item.living_area_total} sqm</td>
                         </tr>
                     ))}
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }
 
-export default HouseTable;
+export default connect()(HouseTable);
