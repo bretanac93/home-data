@@ -47,21 +47,26 @@ class SortAll extends Component {
     render() {
         return (
             <div className="SortAll">
-                <select name="name" value={this.state.name} id="name_sort" onChange={this.handleChange}>
-                    <option value="">Name</option>
-                    <option value="asc">Asc</option>
-                    <option value="desc">Desc</option>
-                </select>
-                <select name="price" value={this.state.price} id="price_sort" onChange={this.handleChange}>
-                    <option value="">Price</option>
-                    <option value="asc">Asc</option>
-                    <option value="desc">Desc</option>
-                </select>
-                <select name="living_area_total" value={this.state.living_area_total} id="size_sort" onChange={this.handleChange}>
-                    <option value="">Size</option>
-                    <option value="asc">Asc</option>
-                    <option value="desc">Desc</option>
-                </select>
+                <div className="label">
+                    <h5>Sort all by</h5>
+                </div>
+                <div className="sorters">
+                    <select name="name" value={this.state.name} id="name_sort" onChange={this.handleChange}>
+                        <option value="">Name</option>
+                        <option value="asc">Asc</option>
+                        <option value="desc">Desc</option>
+                    </select>
+                    <select name="price" value={this.state.price} id="price_sort" onChange={this.handleChange}>
+                        <option value="">Price</option>
+                        <option value="asc">Asc</option>
+                        <option value="desc">Desc</option>
+                    </select>
+                    <select name="living_area_total" value={this.state.living_area_total} id="size_sort" onChange={this.handleChange}>
+                        <option value="">Size</option>
+                        <option value="asc">Asc</option>
+                        <option value="desc">Desc</option>
+                    </select>
+                </div>
             </div>
         );
     }

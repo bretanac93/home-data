@@ -1,0 +1,23 @@
+.ProviderItem {
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.ProviderItem .header {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.ProviderItem .header .title {
+    display: flex;
+}
+
+.ProviderItem .header .title h3 {
+    font-size: 21px;
+    align-self: center;
+}
+
+.ProviderItem .header .logo {
+    margin-right: 20px;
+}

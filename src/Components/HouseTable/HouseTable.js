@@ -21,7 +21,7 @@ class HouseTable extends Component {
     render() {
         return (
             <div style={{overflowY: 'auto', height: '300px'}}>
-                <table className="HouseList" style={{width: '100%'}}>
+                <table className="HouseList table table-bordered table-striped" style={{width: '100%'}}>
                     <thead>
                     <tr>
                         <th onClick={() => {this.orderBy('internal_id', this.props.houses[0].vendor_verbose.id)}}>House Id</th>
@@ -37,7 +37,7 @@ class HouseTable extends Component {
                             <td>{item.internal_id}</td>
                             <td><img src={item.exterior_images[0]['fill-320x240']} alt="house-1" width={50 + 'px'} height={50 + 'px'}/></td>
                             <td>{item.name}</td>
-                            <td>{item.price_ready} €</td>
+                            <td>{item.price.toLocaleString('de-DE', { minimumFractionDigits: 2 })} €</td>
                             <td>{item.living_area_total} sqm</td>
                         </tr>
                     ))}
