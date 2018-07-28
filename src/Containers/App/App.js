@@ -29,6 +29,9 @@ class App extends Component {
                 <h1 className="title" style={{fontSize: '18px', marginTop: '5px'}}>FH.de Vendor Management</h1>
                 <SortAll orderByAll={this.orderByAll.bind(this)} />
                 <ProviderList orderBy={this.orderBy.bind(this)} providers={this.props.providers}  />
+                <div className="save" style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '10px'}}>
+                    <button style={{borderRadius: 0}} className="btn btn-outline-info">Save</button>
+                </div>
             </div>
         )
     }
