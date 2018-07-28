@@ -25,11 +25,15 @@ export const ordered = houses => ({
     payload: { houses }
 });
 
-export function orderHousesCollection (prop, order, vendor_id) {
+export function orderHousesCollection (prop, order, vendor_id = null) {
     return (dispatch, getState) => {
         let vendors = [...getState().houses.items];
         for (let item of vendors) {
-            if (item.id === vendor_id) {
+            if (vendor_id) {
+                if (item.id === vendor_id) {
+                    item.houses = _.orderBy(item.houses, [prop], [order]);
+                }
+            } else {
                 item.houses = _.orderBy(item.houses, [prop], [order]);
             }
         }
