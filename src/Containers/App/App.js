@@ -8,9 +8,10 @@ class App extends Component {
     componentDidMount() {
         this.props.dispatch(fetchHouses());
     }
-    orderBy(property, vendor_id) {
-        this.props.dispatch(orderHousesCollection(property, 'asc', vendor_id));
+    orderBy(property, order, vendor_id) {
+        this.props.dispatch(orderHousesCollection(property, order, vendor_id));
     };
+
     render() {
         if (this.props.loading) {
             return (<div>Loading...</div>)
@@ -20,7 +21,7 @@ class App extends Component {
         }
         return (
             <div>
-                <ProviderList providers={this.props.providers}  />
+                <ProviderList orderBy={this.orderBy.bind(this)} providers={this.props.providers}  />
             </div>
         )
     }

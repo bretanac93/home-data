@@ -16,7 +16,7 @@ class ProviderItem extends Component {
                     </div>
                 </div>
                 <div className="table">
-                    <HouseTable houses={this.props.provider.houses} />
+                    <HouseTable orderBy={this.props.orderBy} houses={this.props.provider.houses} />
                 </div>
             </div>
         );

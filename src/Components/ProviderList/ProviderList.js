@@ -6,7 +6,7 @@ class ProviderList extends Component {
     render() {
         return (
             <div className="ProviderList">
-                {this.props.providers.map(item => <ProviderItem provider={item} key={item.id} />)}
+                {this.props.providers.map(item => <ProviderItem orderBy={this.props.orderBy} provider={item} key={item.id} />)}
             </div>
         );
     }

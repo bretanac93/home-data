@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { orderHousesCollection } from '../../store/actions/houses'
+
 class HouseTable extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +16,7 @@ class HouseTable extends Component {
             orderedBy: property
         });
 
-        this.props.dispatch(orderHousesCollection(this.state.orderedBy, this.state.order, vendor_id));
+        this.props.orderBy(this.state.orderedBy, this.state.order, vendor_id);
     };
     render() {
         return (
@@ -49,4 +48,4 @@ class HouseTable extends Component {
     }
 }
 
-export default connect()(HouseTable);
+export default HouseTable;
