@@ -1,0 +1,14 @@
+.SortAll {
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: flex-end;
+}
+
+.SortAll .label {
+    margin-right: 10px;
+}
+.SortAll .sorters select {
+    margin-left: 10px;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './SortAll.css'
 
 class SortAll extends Component {
     constructor(props) {
@@ -48,7 +49,7 @@ class SortAll extends Component {
         return (
             <div className="SortAll">
                 <div className="label">
-                    <h5>Sort all by</h5>
+                    <small>Sort all by</small>
                 </div>
                 <div className="sorters">
                     <select name="name" value={this.state.name} id="name_sort" onChange={this.handleChange}>

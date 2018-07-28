@@ -25,7 +25,8 @@ class App extends Component {
             return <div>Error!!!</div>
         }
         return (
-            <div>
+            <div className="App">
+                <h1 className="title" style={{fontSize: '18px', marginTop: '5px'}}>FH.de Vendor Management</h1>
                 <SortAll orderByAll={this.orderByAll.bind(this)} />
                 <ProviderList orderBy={this.orderBy.bind(this)} providers={this.props.providers}  />
             </div>
