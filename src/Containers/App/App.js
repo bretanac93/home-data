@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {fetchHouses, orderHousesCollection} from "../../store/actions/houses";
 
 import ProviderList from '../../Components/ProviderList/ProviderList'
+import SortAll from '../../Components/SortAll/SortAll'
 
 class App extends Component {
     componentDidMount() {
@@ -11,6 +12,10 @@ class App extends Component {
     orderBy(property, order, vendor_id) {
         this.props.dispatch(orderHousesCollection(property, order, vendor_id));
     };
+
+    orderByAll(property, order) {
+        this.props.dispatch(orderHousesCollection(property, order));
+    }
 
     render() {
         if (this.props.loading) {
@@ -21,6 +26,7 @@ class App extends Component {
         }
         return (
             <div>
+                <SortAll orderByAll={this.orderByAll.bind(this)} />
                 <ProviderList orderBy={this.orderBy.bind(this)} providers={this.props.providers}  />
             </div>
         )

@@ -20,8 +20,8 @@ class HouseTable extends Component {
     };
     render() {
         return (
-            <div>
-                <table className="HouseList" style={{width: 100 + '%'}}>
+            <div style={{overflowY: 'auto', height: '300px'}}>
+                <table className="HouseList" style={{width: '100%'}}>
                     <thead>
                     <tr>
                         <th onClick={() => {this.orderBy('internal_id', this.props.houses[0].vendor_verbose.id)}}>House Id</th>
