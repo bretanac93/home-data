@@ -38,7 +38,7 @@ class HouseTable extends Component {
                             <td>{item.internal_id}</td>
                             <td><img src={item.exterior_images[0]['fill-320x240']} alt="house-1" width={50 + 'px'} height={50 + 'px'}/></td>
                             <td>{item.name}</td>
-                            <td><EditablePrice price={item.price} house_id={item.internal_id}/></td>
+                            <td><EditablePrice pushUpdate={this.props.pushUpdate} price={item.price} house_id={item.internal_id}/></td>
                             <td>{item.living_area_total} sqm</td>
                         </tr>
                     ))}

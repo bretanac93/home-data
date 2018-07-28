@@ -5,6 +5,7 @@ export const FETCH_HOUSES_START = "FETCH_HOUSES_START";
 export const FETCH_HOUSES_SUCCESS = "FETCH_HOUSES_SUCCESS";
 export const FETCH_HOUSES_FAILURE = "FETCH_HOUSES_FAILURE";
 export const ORDER_SPECIFIC = "ORDER_SPECIFIC";
+export const UPDATE_PRICE = "UPDATE_PRICE";
 
 export const fetchHousesBegin = () => ({
     type: FETCH_HOUSES_START
@@ -25,6 +26,11 @@ export const ordered = houses => ({
     payload: { houses }
 });
 
+export const pushPriceUpdate = updated => ({
+    type: UPDATE_PRICE,
+    payload: { updated }
+});
+
 export function orderHousesCollection (prop, order, vendor_id = null) {
     return (dispatch, getState) => {
         let vendors = [...getState().houses.items];
@@ -41,8 +47,26 @@ export function orderHousesCollection (prop, order, vendor_id = null) {
     }
 }
 
-function handleData(data) {
+export function pushUpdatedPrice(id, price) {
+    return (dispatch,  getState) => {
+        let updated = [...getState().houses.updated];
 
+        let flag = false;
+
+        for (let item of updated) {
+            if (item.id === id) {
+                item.price = price;
+                flag = true;
+            }
+        }
+        if (!flag) {
+            updated.push({ id, price });
+        }
+        dispatch(pushPriceUpdate(updated));
+    }
+}
+
+function handleData(data) {
     let contained_vendors = [];
     let vendors = [];
     // Retrieve the vendors separated from the house collection

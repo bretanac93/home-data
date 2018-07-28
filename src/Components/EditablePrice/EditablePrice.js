@@ -19,6 +19,7 @@ class EditablePrice extends Component {
         });
         if (evt.target.name === 'save') {
             console.log(this.state.value, this.state.house_id);
+            this.props.pushUpdate(this.state.house_id, this.state.value);
         }
     }
     changePrice(evt) {

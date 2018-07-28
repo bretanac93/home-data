@@ -3,10 +3,12 @@ import {
     FETCH_HOUSES_SUCCESS,
     FETCH_HOUSES_FAILURE,
     ORDER_SPECIFIC,
+    UPDATE_PRICE
 } from '../actions/houses';
 
 const initialState = {
     items: [],
+    updated: [],
     loading: false,
     error: null,
     name: 'Cesar'
@@ -38,6 +40,11 @@ const houses = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 items: action.payload.houses
+            };
+        case UPDATE_PRICE:
+            return {
+                ...state,
+                updated: action.payload.updated
             };
         default:
             return state;
