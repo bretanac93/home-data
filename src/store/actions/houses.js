@@ -26,9 +26,9 @@ export const ordered = houses => ({
     payload: { houses }
 });
 
-export const pushPriceUpdate = updated => ({
+export const pushPriceUpdate = (updated, houses) => ({
     type: UPDATE_PRICE,
-    payload: { updated }
+    payload: { updated, houses }
 });
 
 export function orderHousesCollection (prop, order, vendor_id = null) {
@@ -50,7 +50,7 @@ export function orderHousesCollection (prop, order, vendor_id = null) {
 export function pushUpdatedPrice(id, price) {
     return (dispatch,  getState) => {
         let updated = [...getState().houses.updated];
-
+        let vendors = [...getState().houses.items];
         let flag = false;
 
         for (let item of updated) {
@@ -62,7 +62,16 @@ export function pushUpdatedPrice(id, price) {
         if (!flag) {
             updated.push({ id, price });
         }
-        dispatch(pushPriceUpdate(updated));
+
+        for (let vendor in vendors) {
+            for (let house in vendor.houses) {
+                if (house.internal_id === id) {
+                    house.price = price;
+                }
+            }
+        }
+
+        dispatch(pushPriceUpdate(updated, vendors));
     }
 }
 

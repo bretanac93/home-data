@@ -44,7 +44,8 @@ const houses = (state = initialState, action) => {
         case UPDATE_PRICE:
             return {
                 ...state,
-                updated: action.payload.updated
+                updated: action.payload.updated,
+                items: action.payload.houses
             };
         default:
             return state;
